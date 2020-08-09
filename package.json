@@ -1,0 +1,27 @@
+{
+  "name": "as-cli",
+  "version": "1.0.0",
+  "description": "航展项目的脚手架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cxuhwiuefhuefu/as-cli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "as": "index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/cxuhwiuefhuefu/as-cli/issues"
+  },
+  "homepage": "https://github.com/cxuhwiuefhuefu/as-cli#readme",
+  "dependencies": {
+    "commander": "^6.0.0",
+    "download-github-repo": "^0.1.4"
+  }
+}
