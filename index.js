@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const { program } = require('commander');
+const program = require('commander');
 const download = require('download-github-repo');
 
 // 使用Node开发命令行工具所执行的JavaScript脚本必须在顶部加入 #!/usr/bin/env node 声明
@@ -29,18 +29,18 @@ program
 
 const templates = {
     'tpl-a': {
-        url: 'https://github.com/cxuhwiuefhuefu/Happy-puzzle',
-        downloadUrl: "https://github.com/cxuhwiuefhuefu/Happy-puzzle#master",
+        url: 'https://github.com/cxuhwiuefhuefu/tpl-a',
+        downloadUrl: "https://github.com/cxuhwiuefhuefu/tpl-a#master",
         description: 'A模板'
     },
     'tpl-b': {
-        url: 'https://github.com/cxuhwiuefhuefu/Happy-puzzle',
-        downloadUrl: "https://github.com/cxuhwiuefhuefu/Happy-puzzle#master",
+        url: 'https://github.com/cxuhwiuefhuefu/tpl-b',
+        downloadUrl: "https://github.com/cxuhwiuefhuefu/tpl-b#master",
         description: 'B模板'
     },
     'tpl-c': {
-        url: 'https://github.com/cxuhwiuefhuefu/Happy-puzzle',
-        downloadUrl: "https://github.com/cxuhwiuefhuefu/Happy-puzzle#master",
+        url: 'https://github.com/cxuhwiuefhuefu/tpl-c',
+        downloadUrl: "https://github.com/cxuhwiuefhuefu/tpl-c#master",
         description: 'C模板'
     },
 }
