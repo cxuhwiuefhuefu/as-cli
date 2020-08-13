@@ -21,7 +21,12 @@
   },
   "homepage": "https://github.com/cxuhwiuefhuefu/as-cli#readme",
   "dependencies": {
+    "chalk": "^4.1.0",
     "commander": "^6.0.0",
-    "download-github-repo": "^0.1.4"
+    "download-github-repo": "^0.1.4",
+    "handlebars": "^4.7.6",
+    "inquirer": "^7.3.3",
+    "log-symbols": "^4.0.0",
+    "ora": "^5.0.0"
   }
 }

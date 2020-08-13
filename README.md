@@ -42,3 +42,28 @@ npm link
 准备模板
 
 `download-git-repo`帮我们下载github上对应的仓库到我们的本地
+
+
+
+
+命令行交互
+模板引擎替换掉
+`handlebars` 当做模板引擎处理字符串的
+
+`inquirer`向导 报名 命令行交互 采集用户输入的数据
+
+最后用数据将模板引擎整合到我们本地文件当中 最后给他重写一下
+
+
+
+视觉美化
+下载模板的过程中 用户感知不到正在下载 加loading效果 
+`ora`
+
+
+`chalk` 给命令行的输出文本添加颜色
+
+`log-symbols`日志符号
+
+
+把工具发布到npm 发包 别人也可以npm install --global as-cli
