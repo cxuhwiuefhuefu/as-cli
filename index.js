@@ -67,13 +67,10 @@ program
     // 下载之前提示做loading提示 提示文本
     const spinner = ora('正在下载模板...').start();
 
-
     const { downloadUrl } = templates[templateName];
     
-    console.log(downloadUrl)
-
     // 仓库地址 下载路径 
-    download('cxuhwiuefhuefu/tpl-b', projectName, (err) => {  // github仓库地址  下载路径  完整克隆
+    download('cxuhwiuefhuefu/tpl-a', projectName, (err) => {  // github仓库地址  下载路径  完整克隆
         if(err) {
             // 下载失败提示
             spinner.fail();
@@ -88,38 +85,37 @@ program
         // 使用向导的方式采集用户输入的值
         // 使用模板引擎把用户输入的数据解析到package.json文件中
         // 解析完毕，把解析之后的结果重新写入package.json 文件中
-          inquirer.prompt([{
-            type: 'input',
-            name: 'name',
-            message: '请输入项目名称'
-          },
-          {
-            type: 'input',
-            name: 'description',
-            message: '请输入项目简介'
-          },
-          {
-            type: 'input',
-            name: 'author',
-            message: '请输入作者名称'
-          }]).then((answers) => {
-            // console.log(answers);
+        inquirer.prompt([{
+          type: 'input',
+          name: 'name',
+          message: '请输入项目名称'
+        },
+        {
+          type: 'input',
+          name: 'description',
+          message: '请输入项目简介'
+        },
+        {
+          type: 'input',
+          name: 'author',
+          message: '请输入作者名称'
+        }]).then((answers) => {
 
-            // 把采集到的用户输入的数据解析替换到 package.json 文件中
-            const packagePath = `${projectName}/package.json`;
-            const packageContent = fs.readFileSync(packagePath, 'utf8') // 把路径读出来 二进制数据
-            // 拿到包内容之后 用handerbars进行解析
-            const packageResult = handlebars.compile(packageContent)(answers) // 把原理内容编译渲染成函数
-            console.log(packageResult);
+          // 把采集到的用户输入的数据解析替换到 package.json 文件中
+          const packagePath = `${projectName}/package.json`;
+          const packageContent = fs.readFileSync(packagePath, 'utf8') // 把路径读出来 二进制数据
 
-            // 把结果重写进去本地文件当中
-            fs.writeFileSync(packagePath, packageResult);
-            console.log(logSymbols.success, chalk.yellow('初始化模板成功')); // 对勾, 带颜色的文本
-          })
 
-          
+          // 拿到包内容之后 用handerbars进行解析
+          const packageResult = handlebars.compile(packageContent)(answers) // 把原理内容编译渲染成函数
 
+
+          // 把结果重写进去本地文件当中
+          fs.writeFileSync(packagePath, packageResult);
+          console.log(logSymbols.success, chalk.yellow('初始化模板成功')); // 对勾, 带颜色的文本
+        })
         
+
       })
   });
 
