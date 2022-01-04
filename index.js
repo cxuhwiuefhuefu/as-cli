@@ -1,16 +1,15 @@
 #!/usr/bin/env node
-const program = require('commander');
-const download = require('download-github-repo');
-const handlebars = require('handlebars');
-const inquirer = require('inquirer');
-const fs = require('fs');
-const ora = require('ora');
-const chalk = require('chalk');
-const logSymbols = require('log-symbols');
+const program = require('commander'); // 提供了用户命令行输入和参数解析等强大功能
+const download = require('download-github-repo'); // 用于从 GitHub 下载代码
+const handlebars = require('handlebars'); // 快速构建模版
+const inquirer = require('inquirer'); // 用户与命令交互的工具
+const fs = require('fs'); // 提供函数来访问文件系统与文件系统进行交互
+const ora = require('ora'); // 显示加载中的效果
+const chalk = require('chalk'); // 修改控制中台的字符串的样式
+const logSymbols = require('log-symbols'); // 为各种日志级别提供着色的符号
 
-// 使用Node开发命令行工具所执行的JavaScript脚本必须在顶部加入 #!/usr/bin/env node 声明
+// 使用 Node 开发命令行工具所执行的 JavaScript 脚本必须在顶部加入 #!/usr/bin/env node 声明
 // 然后把脚本映射到全局的命令 然后去执行这个脚本
-
 // console.log('as-cli 脚手架工具');
 
 
@@ -21,17 +20,13 @@ const logSymbols = require('log-symbols');
 // 使用commander模块处理命令行 比较方便
 // npm install commander
 
-
-
-// 
+ 
 // 2. 根据不同的命令执行不同的功能操作
-
 
 
 
 program
   .version('0.3.0') // -v 或者version的时候输出
-
 
 const templates = {
     'tpl-a': {

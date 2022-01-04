@@ -1,3 +1,11 @@
+<!--
+ * @Author: Sunny
+ * @Date: 2022-01-04 17:38:56
+ * @LastEditors: Suuny
+ * @LastEditTime: 2022-01-04 18:26:49
+ * @Description: 
+ * @FilePath: /as-cli/README.md
+-->
 # as-cli
 航展项目的脚手架
 
@@ -11,8 +19,8 @@
 
 `vue init` 初始化项目骨架
 
-
-`vue init webpack vue-demo`  vue脚手架会帮你下载vue的模板
+`vue init webpack vue-demo`  
+vue脚手架会帮你下载vue的模板
 - 这些项目文件是从webpack模板这里面来的 它把github上的仓库下载到我们本地 在本地通过向导的方式做了一些修改 然后用户在这选择定制 最终产出对应的项目
 - 脚手架就是把基础的东西准备好 当你在用的时候这些一条命令 把基础结构快速的准备好了
 - 就是帮你这个项目基础结构去公共的放到我们的github上 当你想去创建一个项目的时候 我们可以利用这个脚手架 帮我们快速的构建出来了 
@@ -66,4 +74,4 @@ npm link
 `log-symbols`日志符号
 
 
-把工具发布到npm 发包 别人也可以npm install --global as-cli
+把工具发布到npm 发包 别人也可以 npm install --global as-cli
