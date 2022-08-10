@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const program = require('commander'); // 提供了用户命令行输入和参数解析等强大功能
 const download = require('download-github-repo'); // 用于从 GitHub 下载代码
-const handlebars = require('handlebars'); // 快速构建模版
+const handlebars = require('handlebars'); // 解析 快速构建模版 模版引擎
 const inquirer = require('inquirer'); // 用户与命令交互的工具
 const fs = require('fs'); // 提供函数来访问文件系统与文件系统进行交互
 const ora = require('ora'); // 显示加载中的效果
@@ -50,13 +50,17 @@ const templates = {
 
 
 
+
+// 1. 获取用户输入命令
+// 原生获取命令行参数的方式，比较麻烦
+// console.log(process.argv)
 program
   .command('init <template> <project>')
   .description('初始化项目模板') // 运行该命令的提示文本
   // .option("-s, --setup_mode [mode]", "Which setup mode to use") // 选项
   .action(function(templateName, projectName){
-    // 根据模板名下载对应的模板到本地并起名为projectName   
-    // console.log(templateName, projectName);
+    // 根据模板名下载对应的模板到本地并起名为 projectName   
+    console.log(templateName, projectName);
     // console.log(templates[templateName])
 
     // 下载之前提示做loading提示 提示文本
@@ -65,21 +69,22 @@ program
     const { downloadUrl } = templates[templateName];
     
     // 仓库地址 下载路径 
-    download('cxuhwiuefhuefu/tpl-a', projectName, (err) => {  // github仓库地址  下载路径  完整克隆
+    download('cxuhwiuefhuefu/tpl-a', projectName, (err) => {  // github仓库地址(#分支名)  下载路径  完整克隆
+        // 下载失败提示
         if(err) {
-            // 下载失败提示
             spinner.fail();
             console.log(logSymbols.error, chalk.red(err));
             return;
         }
 
+
         // 下载成功提示
         spinner.succeed();
 
-        // 把项目下的package.json文件读取出来
-        // 使用向导的方式采集用户输入的值
-        // 使用模板引擎把用户输入的数据解析到package.json文件中
-        // 解析完毕，把解析之后的结果重新写入package.json 文件中
+        // 把项目下的 package.json 文件读取出来
+        // 使用向导的方式采集用户输入的值 （一问一答）
+        // 使用模板引擎把用户输入的数据解析到 package.json 文件中
+        // 解析完毕，把解析之后的结果重新写入 package.json 文件中
         inquirer.prompt([{
           type: 'input',
           name: 'name',
@@ -102,31 +107,37 @@ program
 
 
           // 拿到包内容之后 用handerbars进行解析
-          const packageResult = handlebars.compile(packageContent)(answers) // 把原理内容编译渲染成函数
+          const packageResult = handlebars.compile(packageContent)(answers) // 把原来的内容编译渲染成函数 再传入  这就是编译替换之后的结果
 
 
           // 把结果重写进去本地文件当中
           fs.writeFileSync(packagePath, packageResult);
+          
+          // 重写成功给个提示
           console.log(logSymbols.success, chalk.yellow('初始化模板成功')); // 对勾, 带颜色的文本
         })
         
 
       })
+
   });
+
+
 
 
 program
   .command('list')
   .description('查看所有可用模板')
-  .action(() => {
+  .action(() => { // 这个命令要做的事情
       for(let key in templates) {
           console.log(`${key} ${templates[key].description}`)
       }
-    //   console.log(`
-    //   a a模板
-    //   b b模板
-    //   c c模板
-    //   `)
+      
+      //   console.log(`
+      //   a a模板
+      //   b b模板
+      //   c c模板
+      //   `)
   });
 
 program.parse(process.argv)
